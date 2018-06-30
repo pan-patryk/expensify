@@ -1,5 +1,5 @@
 Arguments: 
-  C:\Program Files\nodejs\node.exe C:\Program Files (x86)\Yarn\bin\yarn.js add ReactDebugTool
+  C:\Program Files\nodejs\node.exe C:\Program Files (x86)\Yarn\bin\yarn.js add extract-text-webpack-plugin
 
 PATH: 
   C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Windows\System32\OpenSSH\;C:\Program Files\nodejs\;C:\Program Files\Git\cmd;C:\Program Files (x86)\Yarn\bin\;C:\Users\Hry\AppData\Local\Microsoft\WindowsApps;C:\Users\Hry\AppData\Roaming\npm;C:\Users\Hry\AppData\Local\atom\bin;C:\Users\Hry\AppData\Local\GitHubDesktop\bin;C:\Program Files\heroku\bin;C:\Program Files\Microsoft VS Code\bin;C:\Users\Hry\AppData\Local\Yarn\bin
@@ -14,7 +14,7 @@ Platform:
   win32 x64
 
 Trace: 
-  Error: https://registry.yarnpkg.com/ReactDebugTool: Not found
+  Error: https://registry.yarnpkg.com/Wbabel-cli: Not found
       at Request.params.callback [as _callback] (C:\Program Files (x86)\Yarn\lib\cli.js:65656:18)
       at Request.self.callback (C:\Program Files (x86)\Yarn\lib\cli.js:134675:22)
       at Request.emit (events.js:182:13)
@@ -31,50 +31,48 @@ npm manifest:
     "name": "expensify",
     "version": "1.0.0",
     "main": "index.js",
+    "author": "Ad",
     "license": "MIT",
     "scripts": {
-      "server": "live-server public/",
-      "build": "webpack",
+      "serve": "live-server public/",
+      "build:dev": "webpack",
+      "build:prod": "webpack -p --env production",
       "dev-server": "webpack-dev-server",
-      "test": "jest --config=jest.config.json" 
+      "test": "jest --config=jest.config.json"
     },
     "dependencies": {
-      "babel-cli": "6.24.1",
-      "babel-core": "6.25.0",
-      "babel-loader": "7.1.1",
-      "babel-plugin-transform-class-properties": "^6.24.1",
-      "babel-plugin-transform-object-rest-spread": "^6.26.0",
-      "babel-preset-env": "1.5.2",
-      "babel-preset-react": "6.24.1",
-      "css-loader": "^0.28.11",
-      "enzyme": "^3.3.0",
-      "enzyme-adapter-react-16": "^1.1.1",
-      "live-server": "^1.2.0",
-      "moment": "^2.22.2",
-      "node-sass": "^4.9.0",
-      "normalize.css": "^8.0.0",
-      "raf": "^3.4.0",
-      "react": "^16.4.1",
-      "react-addons-shallow-compare": "^15.6.2",
-      "react-dates": "^17.0.0",
-      "react-dom": "15.6.1",
-      "react-modal": "^3.4.5",
-      "react-redux": "^5.0.7",
-      "react-router": "^4.3.1",
-      "react-router-dom": "^4.3.1",
-      "react-test-renderer": "^16.4.1",
-      "redux": "^4.0.0",
-      "sass-loader": "^7.0.3",
-      "style-loader": "^0.21.0",
-      "uuid": "^3.3.0",
-      "validator": "8.0.0",
-      "webpack": "3.1.0",
-      "webpack-dev-server": "2.5.1"
-    },
-    "devDependencies": {
-      "eslint": "^4.19.1",
-      "eslint-config-google": "^0.9.1",
-      "jest": "^23.2.0"
+      "Wbabel-cli": "6.24.1",
+      "Wbabel-core": "6.25.0",
+      "Wbabel-loader": "7.1.1",
+      "Wbabel-plugin-transform-class-properties": "6.24.1",
+      "Wbabel-plugin-transform-object-rest-spread": "6.23.0",
+      "Wbabel-preset-env": "1.5.2",
+      "Wbabel-preset-react": "6.24.1",
+      "Wcss-loader": "0.28.4",
+      "Wenzyme": "2.9.1",
+      "Wenzyme-to-json": "1.5.1",
+      "Wjest": "20.0.4",
+      "Wlive-server": "^1.2.0",
+      "Wmoment": "2.18.1",
+      "Wnode-sass": "4.5.3",
+      "Wnormalize.css": "7.0.0",
+      "Wpython2": "0.0.1",
+      "Wreact": "15.6.1",
+      "Wreact-addons-shallow-compare": "15.6.0",
+      "Wreact-dates": "12.3.0",
+      "Wreact-dom": "15.6.1",
+      "Wreact-modal": "2.2.2",
+      "Wreact-redux": "5.0.5",
+      "Wreact-router-dom": "4.1.2",
+      "Wreact-test-renderer": "15.6.1",
+      "Wredux": "3.7.2",
+      "Wsass-loader": "6.0.6",
+      "Wstyle-loader": "0.18.2",
+      "Wuuid": "3.1.0",
+      "Wvalidator": "8.0.0",
+      "Wwebpack": "3.1.0",
+      "Wwebpack-dev-server": "2.5.1",
+      "live-server": "^1.2.0"
     }
   }
 
@@ -2299,6 +2297,12 @@ Lockfile:
       object.assign "^4.0.4"
       prop-types "^15.6.0"
   
+  enzyme-to-json@^3.3.4:
+    version "3.3.4"
+    resolved "https://registry.yarnpkg.com/enzyme-to-json/-/enzyme-to-json-3.3.4.tgz#67c6040e931182f183418af2eb9f4323258aa77f"
+    dependencies:
+      lodash "^4.17.4"
+  
   enzyme@^3.3.0:
     version "3.3.0"
     resolved "https://registry.yarnpkg.com/enzyme/-/enzyme-3.3.0.tgz#0971abd167f2d4bf3f5bd508229e1c4b6dc50479"
@@ -2758,7 +2762,7 @@ Lockfile:
     dependencies:
       bser "^2.0.0"
   
-  fbjs@^0.8.16, fbjs@^0.8.4, fbjs@^0.8.9:
+  fbjs@^0.8.16, fbjs@^0.8.4:
     version "0.8.17"
     resolved "https://registry.yarnpkg.com/fbjs/-/fbjs-0.8.17.tgz#c4d598ead6949112653d6588b01a5cdcd9f90fdd"
     dependencies:
@@ -5843,14 +5847,14 @@ Lockfile:
       react-with-styles "^3.2.0"
       react-with-styles-interface-css "^4.0.2"
   
-  react-dom@15.6.1:
-    version "15.6.1"
-    resolved "https://registry.yarnpkg.com/react-dom/-/react-dom-15.6.1.tgz#2cb0ed4191038e53c209eb3a79a23e2a4cf99470"
+  react-dom@16.4.1:
+    version "16.4.1"
+    resolved "https://registry.yarnpkg.com/react-dom/-/react-dom-16.4.1.tgz#7f8b0223b3a5fbe205116c56deb85de32685dad6"
     dependencies:
-      fbjs "^0.8.9"
+      fbjs "^0.8.16"
       loose-envify "^1.1.0"
-      object-assign "^4.1.0"
-      prop-types "^15.5.10"
+      object-assign "^4.1.1"
+      prop-types "^15.6.0"
   
   react-is@^16.4.1:
     version "16.4.1"
