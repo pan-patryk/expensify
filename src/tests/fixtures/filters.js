@@ -14,4 +14,5 @@ const allFilters = {
     endDate: moment().add(3,'days')
 }
 
+
 export { filters, allFilters }
