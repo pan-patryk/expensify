@@ -5,7 +5,8 @@ import {
   removeExpense,
   setExpenses,
   startSetExpenses,
-  startRemoveExpense
+  startRemoveExpense,
+  startEditExpense
 } from "../../actions/expenses";
 import expenses from "../fixtures/expenses";
 import configureMockStore from "redux-mock-store";
@@ -38,19 +39,22 @@ test("should setup remove expense action object", () => {
   });
 });
 
-test("should remove expense from firebase", (done) => {
+test("should remove expense from firebase", done => {
   const store = createMockStore({});
-  store.dispatch(startRemoveExpense({ id: expenses[0].id })).then(() => {
-    const actions = store.getActions();
-    expect(actions[0]).toEqual({
-      type: "REMOVE_EXPENSE",
-      id: expenses[0].id
+  store
+    .dispatch(startRemoveExpense({ id: expenses[0].id }))
+    .then(() => {
+      const actions = store.getActions();
+      expect(actions[0]).toEqual({
+        type: "REMOVE_EXPENSE",
+        id: expenses[0].id
+      });
+      return database.ref(`expences/${expenses[0].id}`).once("value");
+    })
+    .then(snapshot => {
+      expect(snapshot.val()).toBe(null);
+      done();
     });
-    return database.ref(`expences/${expenses[0].id}`).once('value');
-  }).then((snapshot) => {
-    expect(snapshot.val()).toBe(null);
-    done();
-  });
 });
 
 test("should setup edit expense action object", () => {
@@ -62,6 +66,33 @@ test("should setup edit expense action object", () => {
       note: "New note value"
     }
   });
+});
+
+test("should update expense in firebase", done => {
+  const { id, createdAt, note, amount } = expenses[1];
+  const store = createMockStore({});
+  store
+    .dispatch(startEditExpense(id, { description: "update" }))
+    .then(() => {
+      const action = store.getActions();
+      expect(action[0]).toEqual({
+        type: "EDIT_EXPENSE",
+        id: id,
+        updates: {
+          description: "update"
+        }
+      });
+      return database.ref(`expenses/${id}`).once("value");
+    })
+    .then(snapshot => {
+      expect(snapshot.val()).toEqual({
+        description: "update",
+        createdAt: createdAt,
+        note: note,
+        amount: amount
+      });
+      done();
+    });
 });
 
 test("should setup add expense action object with provided values", () => {
