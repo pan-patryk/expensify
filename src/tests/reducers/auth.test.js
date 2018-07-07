@@ -6,7 +6,7 @@ test("should set uid in state on login action", () => {
     uid: "1234"
   };
   const state = authReducer({}, action);
-  expect(state).toEqual(action.uid);
+  expect(state).toEqual({ uid: action.uid });
 });
 
 test("should clear state on logout action", () => {
